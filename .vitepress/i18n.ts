@@ -19,7 +19,7 @@ export function applyTranslations(translationSource: { [key: string]: string; },
     }
 
     // prefix link with locale
-    if (item.link && !locale.includes("en")) {
+    if (item.link && locale !== "en_us") {
       item.link = `/${locale}${item.link}`;
     }
 
@@ -39,7 +39,7 @@ export function generateTranslatedSidebars(_rootDir: string, sidebars: { [url: s
   // Create the default english sidebar.
   for (const sidebarPair of Object.entries(sidebars)) {
     const [url, sidebar] = sidebarPair;
-    sidebarResult[url] = applyTranslations(englishFallbacks, englishFallbacks, sidebar, "en");
+    sidebarResult[url] = applyTranslations(englishFallbacks, englishFallbacks, sidebar, "en_us");
   }
 
   const translatedFolder = resolve(_rootDir, "..", "translated");
