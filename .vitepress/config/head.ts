@@ -22,20 +22,17 @@ const _getNewHead = (context: NewHeadContext): string | [string, Record<string, 
 
     "1.21.11": "1.21.11",
 
-    // TODO: bring back 1.21.10
-    "1.21.10": "1.21.11",
-    "1.21.9": "1.21.11",
+    "1.21.10": "1.21.10",
+    "1.21.9": "1.21.10",
 
-    // TODO: bring back 1.21.8
-    "1.21.8": "1.21.11",
-    "1.21.7": "1.21.11",
-    "1.21.6": "1.21.11",
+    "1.21.8": "1.21.8",
+    "1.21.7": "1.21.8",
+    "1.21.6": "1.21.8",
 
     // not on the Docs
     "1.21.5": "1.21.5",
 
-    // TODO: bring back 1.21.4
-    "1.21.4": "1.21.11",
+    "1.21.4": "1.21.4",
 
     // not on the Docs
     "1.21.3": "1.21.3",
@@ -199,20 +196,20 @@ export const getClientTransformHead = (latestVersion: string) => {
 
 export const getBuildTransformHead =
   (latestVersion: string): Fabric.Config["transformHead"] =>
-  (context) => {
-    const returned = _getNewHead({
-      latestVersion,
-      pathname: context.pageData.relativePath,
-      origin: context.siteConfig.sitemap!.hostname,
-      hash: "",
-      search: "",
-      description: context.pageData.description,
-      title: context.pageData.title,
-      isNotFound: context.pageData.isNotFound,
-      isVersioned: context.pageData.filePath.startsWith("versions/"),
-      siteName: context.siteData.locales[context.siteData.localeIndex!].title!,
-      lastUpdated: context.pageData.lastUpdated,
-    });
+    (context) => {
+      const returned = _getNewHead({
+        latestVersion,
+        pathname: context.pageData.relativePath,
+        origin: context.siteConfig.sitemap!.hostname,
+        hash: "",
+        search: "",
+        description: context.pageData.description,
+        title: context.pageData.title,
+        isNotFound: context.pageData.isNotFound,
+        isVersioned: context.pageData.filePath.startsWith("versions/"),
+        siteName: context.siteData.locales[context.siteData.localeIndex!].title!,
+        lastUpdated: context.pageData.lastUpdated,
+      });
 
-    if (typeof returned !== "string") return returned;
-  };
+      if (typeof returned !== "string") return returned;
+    };
