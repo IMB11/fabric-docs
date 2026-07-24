@@ -196,20 +196,20 @@ export const getClientTransformHead = (latestVersion: string) => {
 
 export const getBuildTransformHead =
   (latestVersion: string): Fabric.Config["transformHead"] =>
-    (context) => {
-      const returned = _getNewHead({
-        latestVersion,
-        pathname: context.pageData.relativePath,
-        origin: context.siteConfig.sitemap!.hostname,
-        hash: "",
-        search: "",
-        description: context.pageData.description,
-        title: context.pageData.title,
-        isNotFound: context.pageData.isNotFound,
-        isVersioned: context.pageData.filePath.startsWith("versions/"),
-        siteName: context.siteData.locales[context.siteData.localeIndex!].title!,
-        lastUpdated: context.pageData.lastUpdated,
-      });
+  (context) => {
+    const returned = _getNewHead({
+      latestVersion,
+      pathname: context.pageData.relativePath,
+      origin: context.siteConfig.sitemap!.hostname,
+      hash: "",
+      search: "",
+      description: context.pageData.description,
+      title: context.pageData.title,
+      isNotFound: context.pageData.isNotFound,
+      isVersioned: context.pageData.filePath.startsWith("versions/"),
+      siteName: context.siteData.locales[context.siteData.localeIndex!].title!,
+      lastUpdated: context.pageData.lastUpdated,
+    });
 
-      if (typeof returned !== "string") return returned;
-    };
+    if (typeof returned !== "string") return returned;
+  };
